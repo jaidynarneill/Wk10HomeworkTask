@@ -1,36 +1,62 @@
 {
   "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
-  "title": "COVID-19 Active Cases (10 Oct 2020)",
+  "title": {
+    "text": "Immigrant Population Across Australia",
+    "font": "Dubai",
+    "fontSize": 20
+  },
   "width": 800,
   "height": 400,
-  "projection": {"type": "equalEarth"},
+  "background": "#f5fcff",
+  "projection": {
+    "type": "mercator"
+  },
   "data": {
-    "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/js/ne_110m_admin_0_countries.topojson",
-    "format": {"type": "topojson", "feature": "ne_110m_admin_0_countries"}
+    "url": "https://raw.githubusercontent.com/jaidynarneill/Wk9_Homework_JaidynArneill/refs/heads/main/json/Australian_States_JaidynArneill.json",
+    "format": {"type": "topojson", "feature": "ne_10m_admin_1_states_provinces"}
   },
   "transform": [
     {
-      "lookup": "properties.NAME",
+      "lookup": "properties.name",
       "from": {
         "data": {
-          "url": "https://raw.githubusercontent.com/FIT3179/Vega-Lite/main/3_choropleth_map/data/covid_10_10_2020.csv"
+          "url": "https://raw.githubusercontent.com/jaidynarneill/Wk9_Homework_JaidynArneill/refs/heads/main/data/Wk9Homework.csv"
         },
-        "key": "Country",
-        "fields": ["Active"]
+        "key": "States",
+        "fields": ["Immigrants Per 1000 People"]
       }
-    },
-    {"calculate": "datum.Active + 0.1", "as": "Active Cases"}
+    }
   ],
   "mark": {"type": "geoshape"},
   "encoding": {
     "color": {
-      "field": "Active Cases",
+      "field": "Immigrants Per 1000 People",
       "type": "quantitative",
-      "scale": {"type": "log"}
+      "scale": {
+        "type": "threshold",
+        "domain": [150, 200, 250, 300, 350], 
+        "range": ["#e0b3f0", "#d58ff2", "#b77bdb", "#9b5bb4", "#7b3f8e"]
+      },
+      "legend": {
+        "title": "Immigrants Per 1000",
+        "titleFont": "Dubai",
+        "titleFontSize": 16,
+        "labelFont": "Dubai",
+        "labelFontSize": 12,
+        "labelFontWeight": "normal"
+      }
     },
     "tooltip": [
-      {"field": "properties.NAME", "type": "nominal", "title": "Country"},
-      {"field": "Active", "type": "quantitative"}
+      {
+        "field": "properties.name",
+        "type": "nominal",
+        "title": "State"
+      },
+      {
+        "field": "Immigrants Per 1000 People",
+        "type": "quantitative",
+        "title": "Immigrants Per 1000 People"
+      }
     ]
   }
 }
