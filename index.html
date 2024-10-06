@@ -3,49 +3,64 @@
 
 <head>
   <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Immigration in Australia</title>
-  
-  <!-- Import Vega & Vega-Lite (from CDN) -->
+
   <script src="https://cdn.jsdelivr.net/npm/vega@5.22.1"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
 
-  <!-- Import pure.css -->
-  <link rel="stylesheet" href="https://unpkg.com/purecss@2.0.3/build/pure-min.css" integrity="sha384-cg6SkqEOCV1NbJoCu11+bm0NvBRc8IYLRGXkmNrqUBfTjmMYwNKPWBTIKyw9mHNJ" crossorigin="anonymous">
-
-  <!-- Google font -->
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Open+Sans&display=swap" rel="stylesheet">
-
-  <!-- CSS file -->
-  <link rel="stylesheet" type="text/css" href="css/styles.css" media="all">
+  <title>Immigration in Australia</title>
 
   <style>
     body {
-      font-family: 'Open Sans', sans-serif;
+      font-family: 'Dubai', sans-serif;
+      text-align: left;
+      background-color: #f5feff;
     }
 
     h1 {
-      text-align: center;
-      font-size: 32px;
+      font-size: 70px;
+      font-weight: bold;
+      align-self: center;
     }
 
-    .content {
-      text-align: center;
-      padding: 20px;
-    }
-
-    .description {
-      text-align: center;
-      margin: 30px 0;
+    .page {
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      margin-left: 20px;
     }
 
     .vis-container {
       display: flex;
-      justify-content: center;
-      margin-bottom: 30px;
+      flex-direction: row;
+      justify-content: flex-start;
+      align-items: flex-start;
+      width: 100%;
+    }
+
+    #choropleth_map {
+      height: 1000px;
+      width: 800px;
+      margin-right: 350px;
+    }
+
+    #bar_chart {
+      height: 800px;
+      width: 800px;
+    }
+
+    #sunhurst_diagram {
+      height: 800px;
+      width: 800px;
+      margin-top: 20px;
+    }
+
+    .description {
+      font-size: 30px;
+      margin: 20px 0;
+      margin-left: 20px;
     }
   </style>
 </head>
@@ -54,36 +69,34 @@
 
   <div class="page">
 
-    <!-- Title -->
-    <div class="pure-g">
-      <div class="pure-u-1-1">
-        <h1>Immigration in Australia</h1>
-      </div>
-    </div>
+    <h1>Immigration in Australia</h1>
 
-    <!-- Vega-Lite Choropleth Map -->
-    <div class="pure-g">
-      <div class="pure-u-1-1 vis-container">
-        <div id="choropleth_map"></div>
-      </div>
+    <div class="vis-container">
+      <div id="choropleth_map"></div>
+      <div id="bar_chart"></div>
     </div>
+    
+    <div class="description">
+      <p><strong>Western Australia has emerged as a significant destination for migrants</strong>, particularly those who have lived in the country for over ten years. This trend highlights the long-term integration of individuals from diverse backgrounds into the region, contributing to its cultural and economic landscape. Notably, a substantial majority of overseas-born residents in Western Australia fall into this category, indicating a strong historical connection to the state.
 
-    <!-- Description Text -->
-    <div class="pure-g">
-      <div class="pure-u-1-1">
-        <div class="description">
-          <p>This visualization presents the immigration patterns in Australia, focusing on the proportion of people born overseas. The data highlights how different regions vary in the number of people from other countries, giving insights into Australia's diverse cultural landscape. The choropleth map above visually represents this data.</p>
-          <p>By examining the regions with the highest concentrations of foreign-born individuals, we can gain a better understanding of Australia's role as a destination for immigrants and how this impacts its societal structure.</p>
-        </div>
-      </div>
+        The unemployment rate for people born overseas across Australia stands at <strong>5.6%</strong>, which is notably higher than the national average of <strong>4.2%</strong>.</p>
+
+      <div id="sunhurst_diagram"></div>
     </div>
 
   </div>
 
   <script type="text/javascript">
-    var spec2 = "json/Wk9Map_JaidynArneill.vg.json";
-    vegaEmbed('#choropleth_map', spec2).then(function(result) {
-      // Access the Vega view instance as result.view
+    var mapSpec = "json/Wk10Map_JaidynArneill.vg.json";
+    vegaEmbed('#choropleth_map', mapSpec).then(function(result) {
+    }).catch(console.error);
+
+    var barChartSpec = "json/Wk10_Stacked_Bar_Chart.vg.json";
+    vegaEmbed('#bar_chart', barChartSpec).then(function(result) {
+    }).catch(console.error);
+    
+    var sunhurstSpec = "json/Wk10_Sunhurst_Diagram.vg.json";
+    vegaEmbed('#sunhurst_diagram', sunhurstSpec).then(function(result) {
     }).catch(console.error);
   </script>
 
