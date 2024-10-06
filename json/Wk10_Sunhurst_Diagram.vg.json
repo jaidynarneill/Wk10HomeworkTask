@@ -1,0 +1,136 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Employment Distribution in Australia",
+    "font": "Dubai",
+    "fontWeight": "bold",
+    "fontSize": 40
+  },
+  "width": 1000,
+  "height": 1000,
+  "layer": [
+    {
+      "data": {
+        "values": [
+          {"Category": "Employed (%)", "Percentage": 94.4},
+          {"Category": "Unemployed (%)", "Percentage": 5.6}
+        ]
+      },
+      "mark": {
+        "type": "arc",
+        "innerRadius": 0,
+        "outerRadius": 350,
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "theta": {
+          "field": "Percentage",
+          "type": "quantitative",
+          "aggregate": "sum"
+        },
+        "color": {
+          "field": "Category",
+          "type": "nominal",
+          "scale": {
+            "domain": ["Employed (%)", "Unemployed (%)"],
+            "range": ["#ffffbb", "#000000", "#BA68C8", "#7B1FA2", "#4A148C", "#E1BEE7"]
+          },
+          "title": "Employment"
+        },
+        "tooltip": [
+          {"field": "Category", "title": "Category"},
+          {"field": "Percentage", "title": "Percentage"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"Category": "Managers (%)", "Percentage": 23.3},
+          {"Category": "Professionals (%)", "Percentage": 32.4},
+          {"Category": "Technicians (%)", "Percentage": 27.4},
+          {"Category": "Community (%)", "Percentage": 11.3}
+        ]
+      },
+      "mark": {
+        "type": "arc",
+        "innerRadius": 350,
+        "outerRadius": 450,
+        "stroke": "white",
+        "strokeWidth": 1
+      },
+      "encoding": {
+        "theta": {
+          "field": "Percentage",
+          "type": "quantitative",
+          "aggregate": "sum"
+        },
+        "color": {
+          "field": "Category",
+          "type": "nominal",
+          "scale": {
+            "domain": [
+              "Managers (%)",
+              "Professionals (%)",
+              "Technicians (%)",
+              "Community (%)"
+            ],
+            "range": ["#BA68C8", "#7B1FA2", "#4A148C", "#E1BEE7"]
+          },
+          "title": "Job Categories"
+        },
+        "tooltip": [
+          {"field": "Category", "title": "Category"},
+          {"field": "Percentage", "title": "Percentage"}
+        ]
+      }
+    },
+    {
+      "data": {
+        "values": [
+          {"Category": "Employed (%)", "Percentage": 94.4}
+        ]
+      },
+      "mark": {
+        "type": "text",
+        "fontSize": 60,
+        "dy": 130,
+        "dx": 0
+      },
+      "transform": [
+        {
+          "calculate": "datum.Percentage + ' %'",
+          "as": "textLabel"
+        }
+      ],
+      "encoding": {
+        "theta": {
+          "field": "Percentage",
+          "type": "quantitative",
+          "aggregate": "sum"
+        },
+        "text": {
+          "field": "textLabel",
+          "type": "nominal"
+        },
+        "color": {
+          "value": "black"
+        }
+      }
+    }
+  ],
+  "config": {
+    "background": "#f5feff",
+    "legend": {
+      "labelFontSize": 30,
+      "titleFontSize": 30,
+      "rowPadding": 15,
+      "titleLimit":1000,
+      "labelLimit":1000,
+      "offset":-60,
+      "symbolStrokeColor":"black",
+      "symbolStrokeWidth":2.5
+    }
+  }
+}

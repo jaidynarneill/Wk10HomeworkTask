@@ -1,0 +1,86 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "Migrate Arrival Time per State",
+    "font": "Dubai",
+    "fontWeight": "bold",
+    "fontSize": 40
+  },
+  "width": 800,
+  "height": 700,
+  "data": {
+    "url": "https://raw.githubusercontent.com/jaidynarneill/Wk10HomeworkTask/refs/heads/main/data/Stacked_Bar_Chart_ArrivalWk10.csv"
+  },
+  "mark": "bar",
+  "encoding": {
+    "x": {
+      "field": "percentage",
+      "type": "quantitative",
+      "stack": "normalize",
+      "axis": {
+        "title": "Total Percentage of Immigrants",
+        "format": ".0%",
+        "labelFont": "Dubai",
+        "titleFont": "Dubai",
+        "labelFontSize": 20,
+        "titleFontSize": 24
+      }
+    },
+    "y": {
+      "field": "Label",
+      "type": "nominal",
+      "sort": [
+        "Arrived within 5 years (%)",
+        "Arrived over 10 years ago (%)",
+        "Arrived 5-10 years ago (%)",
+        "Arrival not stated (%)"
+      ],
+      "axis": {
+        "title": "State",
+        "labelFont": "Dubai",
+        "titleFont": "Dubai",
+        "labelFontSize": 20,
+        "titleFontSize": 24
+      }
+    },
+    "color": {
+      "field": "Arrival Type",
+      "type": "nominal",
+      "scale": {
+        "domain": [
+          "Arrived within 5 years (%)",
+          "Arrived 5-10 years ago (%)",
+          "Arrived over 10 years ago (%)",
+          "Arrival not stated (%)"
+        ],
+        "range": ["#7b3294", "#d9d9d9", "#c2a5cf", "#000000"] 
+      },
+      "legend": {
+        "title": "Arrival Time",
+        "titleFont": "Dubai",
+        "labelFont": "Dubai",
+        "labelFontSize": 25,
+        "titleFontSize": 30,
+        "labelLimit": 1000
+      }
+    }
+  },
+  "transform": [
+    {
+      "fold": [
+        "Arrived 5-10 years ago (%)",
+        "Arrival not stated (%)",
+        "Arrived over 10 years ago (%)",
+        "Arrived within 5 years (%)"
+      ],
+      "as": ["Arrival Type", "percentage"]
+    }
+  ],
+  "config": {
+    "background": "#f5feff",
+    "axis": {
+      "labelFont": "Dubai",
+      "titleFont": "Dubai"
+    }
+  }
+}
