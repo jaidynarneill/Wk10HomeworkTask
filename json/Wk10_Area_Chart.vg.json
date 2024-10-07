@@ -1,0 +1,337 @@
+{
+  "$schema": "https://vega.github.io/schema/vega-lite/v5.json",
+  "title": {
+    "text": "How Migrant Income is Changing",
+    "font": "Dubai",
+    "fontSize": 40
+  },
+  "background": "#f5feff",
+  "width": 800,
+  "height": 700,
+  "data": {
+    "values": [
+      {"Code": 4, "Label": "South Australia", "Year": 2016, "Under $500 per week": 51.9, "$3000 or more per week (%)": 1.9, "Category": "Under $500"},
+      {"Code": 4, "Label": "South Australia", "Year": 2021, "Under $500 per week": 41.9, "$3000 or more per week (%)": 3.0, "Category": "Under $500"},
+      {"Code": 7, "Label": "Northern Territory", "Year": 2016, "Under $500 per week": 30.2, "$3000 or more per week (%)": 4.6, "Category": "Under $500"},
+      {"Code": 7, "Label": "Northern Territory", "Year": 2021, "Under $500 per week": 25.5, "$3000 or more per week (%)": 4.6, "Category": "Under $500"},
+      {"Code": 8, "Label": "National", "Year": 2016, "Under $500 per week": 44.8, "$3000 or more per week (%)": 3.3, "Category": "$3000 or more"},
+      {"Code": 8, "Label": "National", "Year": 2021, "Under $500 per week": 36.4, "$3000 or more per week (%)": 4.6, "Category": "$3000 or more"}
+    ]
+  },
+  "layer": [
+    {
+      "mark": {
+        "type": "area",
+        "opacity": 0.5
+      },
+      "transform": [
+        {
+          "filter": "datum.Label == 'National'"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative",
+          "axis": {
+            "title": "Year",
+            "labelFont": "Dubai",
+            "labelFontSize": 26,
+            "titleFont": "Dubai",
+            "titleFontSize": 30,
+            "ticks": true,
+            "tickCount": 4,
+            "labelPadding": 10,
+            "grid": false,
+            "format": "d"
+          }
+        },
+        "y": {
+          "field": "Under $500 per week",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 52] 
+          },
+          "axis": {
+            "title": "% of Overseas People",
+            "labelFont": "Dubai",
+            "labelFontSize": 26,
+            "titleFont": "Dubai",
+            "titleFontSize": 40,
+            "labelPadding": 20
+          }
+        },
+        "color": {
+          "field": "Category",
+          "scale": {
+            "domain": ["Under $500", "$3000 or more"],
+            "range": ["#CF9FFF", "#BA68C8"]
+          },
+          "legend": {
+            "title": "Income",
+            "labelFontSize": 30,
+            "titleFontSize": 35,
+            "rowPadding": 15,
+            "titleLimit":1000,
+            "labelLimit":1000,
+    
+            "symbolStrokeColor":"black",
+            "symbolStrokeWidth":2.5
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "stroke": "black",
+        "strokeDash": [3, 5]
+      },
+      "transform": [
+        {
+          "filter": "datum.Label == 'Northern Territory'"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "Under $500 per week",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 52] 
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "area",
+        "opacity": 0.5
+      },
+      "transform": [
+        {
+          "filter": "datum.Label == 'National'"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "$3000 or more per week (%)",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 52] 
+          }
+        },
+        "color": {
+          "value": "#BA68C8"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "stroke": "black",
+        "strokeDash": [0, 0]
+      },
+      "transform": [
+        {
+          "filter": "datum.Label == 'National'"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "Under $500 per week",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 52] 
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "stroke": "black",
+        "strokeDash": [0, 0]
+      },
+      "transform": [
+        {
+          "filter": "datum.Label == 'National'"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "$3000 or more per week (%)",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 52]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "stroke": "black",
+        "strokeDash": [25, 5]
+      },
+      "transform": [
+        {
+          "filter": "datum.Label == 'South Australia'"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "Under $500 per week",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 52]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "stroke": "black",
+        "strokeDash": [25, 5]
+      },
+      "transform": [
+        {
+          "filter": "datum.Label == 'South Australia'"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "$3000 or more per week (%)",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 52]
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "line",
+        "stroke": "black",
+        "strokeDash": [3, 5]
+      },
+      "transform": [
+        {
+          "filter": "datum.Label == 'Northern Territory'"
+        }
+      ],
+      "encoding": {
+        "x": {
+          "field": "Year",
+          "type": "quantitative"
+        },
+        "y": {
+          "field": "$3000 or more per week (%)",
+          "type": "quantitative",
+          "scale": {
+            "domain": [0, 52] 
+          }
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "font": "Dubai",
+        "fontSize": 35,
+        "dy": -320
+      },
+      "transform": [
+        {
+          "filter": "datum.Label == 'South Australia'"
+        }
+      ],
+      "encoding": {
+        "text": {
+          "field": "Label"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Label == 'South Australia'",
+            "value": "black"
+          },
+          "value": "black"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "font": "Dubai",
+        "fontSize": 40,
+        "dy": -160
+      },
+      "transform": [
+        {
+          "filter": "datum.Label == 'National'"
+        }
+      ],
+      "encoding": {
+        "text": {
+          "field": "Label"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Label == 'National'",
+            "value": "black"
+          },
+          "value": "black"
+        }
+      }
+    },
+    {
+      "mark": {
+        "type": "text",
+        "font": "Dubai",
+        "fontSize": 35,
+        "dy": 0
+      },
+      "transform": [
+        {
+          "filter": "datum.Label == 'Northern Territory'"
+        }
+      ],
+      "encoding": {
+        "text": {
+          "field": "Label"
+        },
+        "color": {
+          "condition": {
+            "test": "datum.Label == 'National'",
+            "value": "black"
+          },
+          "value": "black"
+        }
+      }
+    }
+  ]
+}
