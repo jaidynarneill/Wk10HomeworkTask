@@ -1,15 +1,7 @@
-Code,Label,Year,Under $500 per week,$1000-3000 per week,$3000 or more per week (%)
-1,New South Wales,2016,45.2,28.1,4.0
-1,New South Wales,2021,36.9,34.0,6.6
-2,Victoria,2016,48.7,25.2,2.8
-2,Victoria,2021,39.3,32.8,4.7
-3,Queensland,2016,43.9,27.2,2.9
-3,Queensland,2021,35.7,34.3,4.5
-4,South Australia,2016,51.9,21.8,1.9
-4,South Australia,2021,41.9,29.5,3.0
-5,Western Australia,2016,41.4,32.1,4.5
-5,Western Australia,2021,35.2,36.9,6.2
-6,Tasmania,2016,52.3,21.2,2.2
-6,Tasmania,2021,40.1,28.4,2.9
-7,Northern Territory,2016,30.2,40.8,4.6
-7,Northern Territory,2021,25.5,46.7,4.6
+Code,Label,Year,Under $500 per week,$3000 or more per week (%)
+4,South Australia,2016,51.9,1.9
+4,South Australia,2021,41.9,3.0
+7,Northern Territory,2016,30.2,4.6
+7,Northern Territory,2021,25.5,4.6
+8,Average,2016,44.8,3.3
+8,Average,2021,36.4,4.6
