@@ -10,7 +10,7 @@
   <script src="https://cdn.jsdelivr.net/npm/vega-lite@5.5.0"></script>
   <script src="https://cdn.jsdelivr.net/npm/vega-embed@6.21.0"></script>
 
-  <title>Immigration in Australia</title>
+  <title>Migration and Income Trends in Australian States</title>
 
   <style>
     body {
@@ -41,9 +41,9 @@
     }
 
     #choropleth_map {
-      height: 1000px;
+      height: 900px;
       width: 800px;
-      margin-right: 350px;
+      margin-right: 300px;
     }
 
     #bar_chart {
@@ -55,6 +55,14 @@
       height: 800px;
       width: 800px;
       margin-top: 20px;
+      margin-right: 500px;
+    }
+
+    #area_chart {
+      height: 1000px;
+      width: 800px;
+      margin-top: 20px; /* Add margin to separate area chart from the Sunhurst diagram */
+      margin-left: 20px; /* Optional: Add margin to space out from the left */
     }
 
     .description {
@@ -69,7 +77,7 @@
 
   <div class="page">
 
-    <h1>Immigration in Australia</h1>
+    <h1>Migration and Income Trends in Australian States</h1>
 
     <div class="vis-container">
       <div id="choropleth_map"></div>
@@ -79,9 +87,12 @@
     <div class="description">
       <p><strong>Western Australia has emerged as a significant destination for migrants</strong>, particularly those who have lived in the country for over ten years. This trend highlights the long-term integration of individuals from diverse backgrounds into the region, contributing to its cultural and economic landscape. Notably, a substantial majority of overseas-born residents in Western Australia fall into this category, indicating a strong historical connection to the state.
 
-        The unemployment rate for people born overseas across Australia stands at <strong>5.6%</strong>, which is notably higher than the national average of <strong>4.2%</strong>.</p>
+        The unemployment rate for people born overseas across Australia stands at <strong>5.6%</strong>, which is notably higher than the national average of <strong>4.2%</strong>.<br><br></p>
 
-      <div id="sunhurst_diagram"></div>
+      <div class="vis-container">
+        <div id="sunhurst_diagram"></div>
+        <div id="area_chart"></div> <!-- New area chart div -->
+      </div>
     </div>
 
   </div>
@@ -97,6 +108,10 @@
     
     var sunhurstSpec = "json/Wk10_Sunhurst_Diagram.vg.json";
     vegaEmbed('#sunhurst_diagram', sunhurstSpec).then(function(result) {
+    }).catch(console.error);
+    
+    var areaChartSpec = "json/Wk10_Area_Chart.vg.json"; // New area chart specification
+    vegaEmbed('#area_chart', areaChartSpec).then(function(result) {
     }).catch(console.error);
   </script>
 
